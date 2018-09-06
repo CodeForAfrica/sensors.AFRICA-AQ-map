@@ -1,4 +1,4 @@
 module.exports = {
-	center: [48.80,9.20],
-	zoom: 11
+	center: [-4.46, 19.54],
+  zoom: 4
 }
