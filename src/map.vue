@@ -16,7 +16,8 @@ export default {
 				center: config.center,
 				zoom: config.zoom
 			})
-			leaflet.tileLayer('https://{s}.tiles.madavi.de/{z}/{x}/{y}.png', {
+//			leaflet.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			leaflet.tileLayer('https://maps.luftdaten.info/tiles/{z}/{x}/{y}.png', {
 				attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
 				maxZoom: 13,
 				// continuousWorld: false,
@@ -32,6 +33,18 @@ export default {
 				click: (data) => {
 					this.$emit('cell-selected', data)
 					document.getElementById("cell-info").style.display = ""
+					let row_counter = document.getElementsByClassName("cell_info_images");
+					for (var i = 0; i < row_counter.length; i++) {
+						row_counter[i].style.display = 'none'
+					}
+					row_counter = document.getElementsByClassName("graph_on");
+					for (var i = 0; i < row_counter.length; i++) {
+						row_counter[i].style.display = ''
+					}
+					row_counter = document.getElementsByClassName("graph_off");
+					for (var i = 0; i < row_counter.length; i++) {
+						row_counter[i].style.display = 'none'
+					}
 				}
 			}
 

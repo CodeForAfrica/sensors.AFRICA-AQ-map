@@ -19,7 +19,12 @@ let api = {
 					sensor.location.latitude != null &&
 					sensor.location.longitude != null && (
 					// (sensor.sensor.sensor_type.name == "PPD42NS" && sensor.sensordatavalues.length >= 6) ||
+					(sensor.sensor.sensor_type.name == "HPM" && sensor.sensordatavalues.length >= 2) ||
+					(sensor.sensor.sensor_type.name == "PMS1003" && sensor.sensordatavalues.length >= 2) ||
 					(sensor.sensor.sensor_type.name == "PMS3003" && sensor.sensordatavalues.length >= 2) ||
+					(sensor.sensor.sensor_type.name == "PMS5003" && sensor.sensordatavalues.length >= 2) ||
+					(sensor.sensor.sensor_type.name == "PMS6003" && sensor.sensordatavalues.length >= 2) ||
+					(sensor.sensor.sensor_type.name == "PMS7003" && sensor.sensordatavalues.length >= 2) ||
 					(sensor.sensor.sensor_type.name == "SDS021" && sensor.sensordatavalues.length >= 2) ||
 					(sensor.sensor.sensor_type.name == 'SDS011' && sensor.sensordatavalues.length >= 2))
 				)
@@ -29,7 +34,7 @@ let api = {
 					let long = Number(values[0].location.longitude)
 					let data = _.reduce(values, (acc, value) => {
 						let d = _.keyBy(value.sensordatavalues, 'value_type')
-						if (typeof d.P1 !== 'undefined' && d.P1 !== null && typeof d.P2 !== 'undefined' && d.P2 !== null) {
+						if (typeof d.P1 !== 'undefined' && d.P1 !== null && typeof d.P2 !== 'undefined' && d.P2 !== null && Number(d.P1.value) < 1999 && Number(d.P2.value < 999) ) {
 							acc.P1 += Number(d.P1.value)
 							acc.P2 += Number(d.P2.value)
 						}

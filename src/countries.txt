@@ -3,30 +3,68 @@
 //	* = very unstable, no active sensors for most time
 
 //		Asia		AE	United Arab Emirates
+//		Europe		AL	Albania
+//		America		AR	Argentina
 //		Europe		AT	Austria
+//		Australia	AU	Australia
 //		Europe		BE	Belgium
 //		Europe		BG	Bulgaria
 //		Asia		BN	Brunei
+//		America		BO	Bolivia
+//		America		BR	Brazil
+//		Europe		BY	Belarus
+//		America		CA	Canada
 //		Europe		CH	Suisse
 //		America		CL	Chile
+//		Africa		CM	Cameroon
+//		America		CR	Costa Rica
+//		Europe		CY	Cyprus
 //		Europe		CZ	Czech Republic
 //		Europe		DE	Germany
 //	*	Europe		DK	Denmark
 //		America		DO	Dominican Republic
+//		Asia		EG	Egypt
+//		Europe		ES	Spain
 //		Europe		FI	Finland
 //		Europe		FR	France
 //		Europe		GR	Greece
+//		America		GT	Guatemala
+//		Europe		HR	Croatia
+//		America		HT	Haiti
 //		Europe		HU	Hungary
 //	*	Europe		IE	Ireland
+//		Asia		IN	India
+//		Asia		IQ	Iraq
 //		Europe		IT	Italy
+//		Asia		JP	Japan
+//		Africa		KE	Kenya
+//		Asia		KG	Kyrgyzstan
+//		Asia		KR	Republic of Korea
+//		Europe		LU	Luxembourg
+//		Europe		LV	Latvia
+//		Europe		MK	Macedonia
+//		America		MX	Mexico
+//		Africa		NG	Nigeria
 //		Europe		NL	Netherlands
+//		Europe		NO	Norway
 //		Asia		NP	Nepal
+//		America		PE	Peru
+//		Asia		PH	Philippines (nur externe Sensoren via MQTT)
 //		Europe		PL	Poland
+//		Europe		PT	Portugal
 //		Europe		RO	Romania
 //		Europe		RS	Serbia
-//	*	Asia		TW	Taiwan (nur externe Sensoren)
+		Europe/Asia	RU	Russia
+//		Europe		SE	Sweden
+//		Europe		SI	Slovenia
+//		Europe		SK	Slovakia
 //	*	Asia		TH	Thailand
+//		Asia		TR	Turkey
+//	*	Asia		TW	Taiwan (nur externe Sensoren via MQTT)
+//		Africa		TZ	Tanzania
 //	*	Europe		UA	Ukraine
 //		Europe		UK	United Kingdom
 //		America		US	USA
 //		Asia		VN	Vietnam
+//		Europe		XK	Kosovo
+//		Africa		ZA	South Africa

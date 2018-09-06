@@ -23,16 +23,12 @@
 		template(v-for="sensor in cell")
 			tr
 				td(style="text-align:left;")
-					a(:id="'graph_'+sensor.o.id+'_on'" onclick="var sensor=this.id.substring(0,this.id.length-3);document.getElementById(sensor).style.display='';document.getElementById(sensor+'_on').style.display='none';document.getElementById(sensor+'_off').style.display=''; return false;" href='#' style='color:white') (+) {{sensor.o.id}}
-					a(:id="'graph_'+sensor.o.id+'_off'" onclick="var sensor=this.id.substring(0,this.id.length-4);document.getElementById(sensor).style.display='none';document.getElementById(sensor+'_on').style.display='';document.getElementById(sensor+'_off').style.display='none'; return false;" href='#' style='color:white; display: none;') (-) {{sensor.o.id}}
+					a(:id="'graph_'+sensor.o.id+'_on'" class="graph_on" onclick="var sensor=this.id.substring(0,this.id.length-3);document.getElementById(sensor).style.display='';document.getElementById(sensor+'_on').style.display='none';document.getElementById(sensor+'_off').style.display=''; document.getElementById('images_'+sensor.substr(6)).innerHTML='<iframe src=\"https://api.luftdaten.info/grafana/d-solo/000000004/single-sensor-view?orgId=1&var-node=' + sensor.substring(6) + '&panelId=1\" width=\"290\" height=\"200\" frameborder=\"0\"></iframe><br /><iframe src=\"https://api.luftdaten.info/grafana/d-solo/000000004/single-sensor-view?orgId=1&var-node=' + sensor.substring(6) + '&panelId=2\" width=\"290\" height=\"200\" frameborder=\"0\"></iframe><br /><br />'; return false;" href='#' style='color:white; text-decoration: none;') (+)&nbsp;{{sensor.o.id}}
+					a(:id="'graph_'+sensor.o.id+'_off'" class="graph_off" onclick="var sensor=this.id.substring(0,this.id.length-4);document.getElementById(sensor).style.display='none';document.getElementById(sensor+'_on').style.display='';document.getElementById(sensor+'_off').style.display='none'; document.getElementById('images_'+sensor.substr(6)).innerHTML=''; return false;" href='#' style='color:white; text-decoration: none; display: none;') (-)&nbsp;{{sensor.o.id}}
 				td {{sensor.o.data.P1.toFixed(0)}}
 				td {{sensor.o.data.P2.toFixed(0)}}
-			tr(:id = "'graph_'+sensor.o.id" style="display:none;")
-				td(colspan='3')
-					img(:src="'https://api.luftdaten.info/grafana/render/dashboard-solo/db/single-sensor-view?panelId=1&orgId=1&width=300&height=200&tz=UTC%2B02%3A00&var-node=' + sensor.o.id")
-					br
-					img(:src="'https://api.luftdaten.info/grafana/render/dashboard-solo/db/single-sensor-view?orgId=1&panelId=2&width=300&height=200&tz=UTC%2B02%3A00&var-node=' + sensor.o.id")
-					br
+			tr(:id = "'graph_'+sensor.o.id" style="display:none" class="cell_info_images")
+				td(:id = "'images_'+sensor.o.id" colspan='3')
 					br
 </template>
 <script>
