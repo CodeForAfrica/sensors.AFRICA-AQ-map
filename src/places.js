@@ -305,6 +305,7 @@ module.exports = {
 //	Ireland
 	"ireland": [53.1333,-8.1167],
 	"dublin": [53.3425,-6.2658],
+	"sligo": [54.276790, -8.474551],
 
 //	Italy
 	"italy": [42,12],
@@ -502,6 +503,11 @@ module.exports = {
 	"iraq": [33,44],
 	"baghdad": [33.33,44.43],
 
+//	Israel
+	"israel": [31,35],
+	"jerusalem": [31.783, 35.217],
+	"tel-aviv": [32.067,34.783],
+
 //	Japan
 	"japan": [35, 136],
 	"tokyo": [35.683, 139.767],
@@ -551,6 +557,14 @@ module.exports = {
 
 //	Australia
 	"australia": [-25,135],
+	"adelaide": [-34.929,138.601],
+	"brisbane": [-27.467, 153.033],
+	"canberra": [-35.3075, 149.124417],
+	"darwin": [-12.45, 130.833],
+	"hobart": [-42.881, 147.325],
+	"melbourne": [-37.814, 144.963],
+	"perth": [-31.952, 115.859],
+	"sydney": [-33.865, 151.209],
 
 	"world": [0,0]
 
