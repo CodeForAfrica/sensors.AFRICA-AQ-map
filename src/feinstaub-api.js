@@ -1,6 +1,6 @@
 // const URL = 'https://api.luftdaten.info/static/v2/data.dust.min.json'
 // const URL = 'https://api.luftdaten.info/v1/filter/area=48.800000,9.200000,50'
-const URL = 'http://api.airquality.codeforafrica.org/v1/now/.'
+const URL = 'https://api.airquality.codeforafrica.org/v1/now/.'
 
 import _ from 'lodash'
 import 'whatwg-fetch'
