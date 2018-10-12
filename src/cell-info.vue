@@ -2,13 +2,13 @@
 #cell-info(v-if="cell")
 	a(href='#' onclick='document.getElementById("cell-info").style.display="none";return false;' style='color:white') (close)
 	p
-		a(href='#' id='map-info-on' onclick='document.getElementById("map-info-on").style.display="none";document.getElementById("map-info-off").style.display="";document.getElementById("map-info").style.display=""; return false;' style='color:white') Erklärung einblenden
-		a(href='#' id='map-info-off' onclick='document.getElementById("map-info-on").style.display="";document.getElementById("map-info-off").style.display="none";document.getElementById("map-info").style.display="none"; return false;' style='color:white; display:none;') Erklärung ausblenden
+		a(href='#' id='map-info-on' onclick='document.getElementById("map-info-on").style.display="none";document.getElementById("map-info-off").style.display="";document.getElementById("map-info").style.display=""; return false;' style='color:white') Show explanation
+		a(href='#' id='map-info-off' onclick='document.getElementById("map-info-on").style.display="";document.getElementById("map-info-off").style.display="none";document.getElementById("map-info").style.display="none"; return false;' style='color:white; display:none;') Hide explanation
 	div(id='map-info' style='display:none')
-		p Die Kacheln werden aktuell nach dem Durchschnitt der PM10-Werte aller in der Zelle enthaltenen Sensoren eingefärbt. Siehe dazu die Skala unten links.
-		p Die Zahlen in der ersten Spalte entsprechen den Sensor-IDs. Die erste Zeile 'mean' enthält die jeweiligen Durchschnittswerte aller in der Zelle enthaltenen Sensoren.
-		p Bitte beachten: Wir zeigen auf der Karte die Werte der letzten 5 Minuten an. Die von den jeweiligen Landesbehörden veröffentlichen Werte werden als 24-Stunden-Mittelwert angegeben. Dadurch können die Werte auf der Karte deutlich von diesen 24-Stunden-Mittelwerten abweichen.
-		p Durch einen Klick auf das Plus vor der Sensor-ID können 2 Grafiken eingeblendet werden. Die Grafik '24 h floating' zeigt den gleitenden 24-Stunden-Mittelwert für die letzten 7 Tage an. Aus technischen Gründen ist am Anfang eine Lücke von einem Tag, die Darstellung zeigt also eigentlich 8 Tage, der erste ist aber leer. Die zweite Grafik 'Last 24 hours' zeigt den Tagesverlauf für die letzten 24 Stunden.
+		p The tiles are currently colored according to the average of the PM10 values of all the sensors in the cell. See the scale on the bottom left.
+		p The numbers in the first column correspond to the sensor IDs. The first line 'mean' contains the respective average values  of all sensors contained in the cell.
+		p Please note: We show on the map the values of the last 5 minutes. The values published by the respective state authorities are given as a 24-hour average. This may cause the values on the chart to differ significantly from these 24-hour averages.
+		p By clicking on the plus in front of the sensor ID 2 graphics can be displayed. The '24 h floating 'graph displays the 24-hour moving average for the last 7 days. For technical reasons, there is a gap of one day at the beginning, so the presentation actually shows 8 days, but the first one is empty. The second graphic 'Last 24 hours' shows the course of the day for the last 24 hours.
 	h3 #Sensors {{cell.length}}
 	
 	table
