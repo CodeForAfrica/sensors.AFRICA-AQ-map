@@ -1,5 +1,7 @@
 # feinstaub-map
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/CodeForAfrica/sensors.AFRICA-AQ-map.svg)](https://greenkeeper.io/)
+
 ## [Live Version](http://opendata-stuttgart.github.io/feinstaub-map/)
 
 Challenge: Aircheck 
