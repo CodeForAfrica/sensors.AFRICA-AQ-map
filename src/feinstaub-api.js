@@ -31,7 +31,7 @@ let api = {
 						latitude: lat,
 						longitude: long,
 						name: name,
-						city:cityName,s
+						city:cityName,
 						date: date,
 						id: "",
 						data: {
