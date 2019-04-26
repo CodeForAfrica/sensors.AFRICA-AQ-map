@@ -18,8 +18,6 @@ let api = {
     return api.fetchNow().then(json => {
       let cells = _.chain(json)
         .map((value, key) => {
-          //let id = value.stats.sensor_id;
-          //console.log(id);
           let lat = Number(value.location.latitude);
           let long = Number(value.location.longitude);
           let location = String(value.location.name);
@@ -36,7 +34,7 @@ let api = {
             city: cityName,
             date: date,
             sensorsMoved: sensorsMoved,
-            id:"",
+            id: "",
             data: {
               P1: P1 ? P1.average : 0,
               P2: P2 ? P2.average : 0
@@ -46,11 +44,6 @@ let api = {
         .value();
       return Promise.resolve(cells);
     });
-  },
-
-  getNumberOfSensors() {
-    //return api.fetchNow().then((json) => {})
-    return "this is a sensor count down";
   }
 };
 
