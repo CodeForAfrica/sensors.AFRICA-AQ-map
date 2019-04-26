@@ -17,13 +17,11 @@
 			th PM10 µg/m³
 			th PM2.5 µg/m³
 			th Location
-			th City
 			th Last active date
 		tr.mean
 			td mean
 			td {{mean.P1.toFixed(0)}}
 			td {{mean.P2.toFixed(0)}}
-			td 
 			td
 			td
 		template(v-for="sensor in cell")
@@ -34,35 +32,32 @@
 				td {{sensor.o.data.P1.toFixed(0)}}
 				td {{sensor.o.data.P2.toFixed(0)}}
 				td {{sensor.o.location}}
-				td {{sensor.o.city}}
 				td {{sensor.o.date}}
 			tr(:id = "'graph_'+sensor.o.id" style="display:none" class="cell_info_images")
 				td(:id = "'images_'+sensor.o.id" colspan='6')
 					br
 </template>
 <script>
-import _ from 'lodash'
+import _ from "lodash";
 
 export default {
-	data () {
-		return {
-			location: (this.cell, (o) => o.o.location),
-			city: (this.cell, (o) => o.o.cityName),
-			date: (this.cell, (o) => o.o.date),
-		}
-	},
-	props: {
-		'cell': Array
-	},
-	computed: {
-		mean () {
-			return {
-				P1: _.meanBy(this.cell, (o) => o.o.data.P1),
-				P2: _.meanBy(this.cell, (o) => o.o.data.P2)
-			}
-		}
-	}
-}
+  data() {
+    return {
+      location: (this.cell, o => o.o.location),
+      date: (this.cell, o => o.o.date)
+    };
+  },
+  props: {
+    cell: Array
+  },
+  computed: {
+    mean() {
+      return {
+        P1: _.meanBy(this.cell, o => o.o.data.P1),
+        P2: _.meanBy(this.cell, o => o.o.data.P2)
+      };
+    }
+  }
+};
 </script>
-<style lang="stylus">
-</style>
+<style lang="stylus"></style>
