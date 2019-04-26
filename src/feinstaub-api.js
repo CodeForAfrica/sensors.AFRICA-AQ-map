@@ -18,10 +18,19 @@ let api = {
     return api.fetchNow().then(json => {
       let cells = _.chain(json)
         .map((value, key) => {
+          let id = function(id) {
+            for (let i in value.stats) {
+              return value.stats[i].sensor_id;
+            }
+          };
+          //for (let i in value.stats) {
+          //let id = Number(value.stats[i].sensor_id);
+          //console.log(id);
+          //}
           let lat = Number(value.location.latitude);
           let long = Number(value.location.longitude);
           let location = String(value.location.name);
-          //console.log(location)
+          console.log();
           let cityName = String(value.location.city.name);
           let date = Date(value.last_date_pushed);
           let sensorsMoved = Boolean(value.sensors_moved);
@@ -34,7 +43,7 @@ let api = {
             city: cityName,
             date: date,
             sensorsMoved: sensorsMoved,
-            id: "",
+            id: id(),
             data: {
               P1: P1 ? P1.average : 0,
               P2: P2 ? P2.average : 0
@@ -46,8 +55,5 @@ let api = {
     });
   }
 };
-
-//console.log(getAllSensors());
-console.log(api.getNumberOfSensors());
 
 export default api;
