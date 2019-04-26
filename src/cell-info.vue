@@ -37,7 +37,7 @@
 				td {{sensor.o.city}}
 				td {{sensor.o.date}}
 			tr(:id = "'graph_'+sensor.o.id" style="display:none" class="cell_info_images")
-				td(:id = "'images_'+sensor.o.id" colspan='3')
+				td(:id = "'images_'+sensor.o.id" colspan='6')
 					br
 </template>
 <script>
