@@ -20,17 +20,13 @@ let api = {
         .map((value, key) => {
           let id = function(id) {
             for (let i in value.stats) {
-              return value.stats[i].sensor_id;
+              return Number(value.stats[i].sensor_id);
             }
           };
-          //for (let i in value.stats) {
-          //let id = Number(value.stats[i].sensor_id);
-          //console.log(id);
-          //}
+          console.log(id());
           let lat = Number(value.location.latitude);
           let long = Number(value.location.longitude);
           let location = String(value.location.name);
-          console.log();
           let cityName = String(value.location.city.name);
           let date = Date(value.last_date_pushed);
           let sensorsMoved = Boolean(value.sensors_moved);
