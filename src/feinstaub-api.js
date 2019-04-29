@@ -18,21 +18,11 @@ let api = {
     return api.fetchNow().then(json => {
       let cells = _.chain(json)
         .map((value, key) => {
-          //let id = function(id) {
-            //for (let i in value.stats) {
-              //return Number(value.stats[i].sensor_id);
-            //}
-          //};
           let id = function(id) {
             for (let i in value.stats) {
-              if (Number(value.stats[i].sensors_id) === "undefined"){
-                return "Inactive"
-              } else {
-                return Number(value.stats[i].sensor_id);
-              }
+              return Number(value.stats[i].sensor_id);
             }
           };
-          //console.log(id());
           let lat = Number(value.location.latitude);
           let long = Number(value.location.longitude);
           let location = String(value.location.name);
