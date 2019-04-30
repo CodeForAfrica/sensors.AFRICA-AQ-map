@@ -5,6 +5,7 @@ const URL = "https://staging.api.sensors.africa/v2/nodes/";
 
 import _ from "lodash";
 import "whatwg-fetch";
+import moment from "moment";
 
 let api = {
   fetchNow() {
@@ -27,7 +28,7 @@ let api = {
           let long = Number(value.location.longitude);
           let location = String(value.location.name);
           let cityName = String(value.location.city.name);
-          let date = Date(value.last_date_pushed);
+          let date = moment(Date(value.last_date_pushed)).format("L");
           let sensorsMoved = Boolean(value.sensors_moved);
           let P1 = value.stats.find(s => s.value_type === "P1");
           let P2 = value.stats.find(s => s.value_type === "P2");
