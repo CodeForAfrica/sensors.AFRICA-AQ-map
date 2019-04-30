@@ -9,7 +9,7 @@
 		p The numbers in the first column correspond to the sensor IDs. The first line 'mean' contains the respective average values  of all sensors contained in the cell.
 		p Please note: We show on the map the values of the last 5 minutes. The values published by the respective state authorities are given as a 24-hour average. This may cause the values on the chart to differ significantly from these 24-hour averages.
 		p By clicking on the plus in front of the sensor ID 2 graphics can be displayed. The '24 h floating 'graph displays the 24-hour moving average for the last 7 days. For technical reasons, there is a gap of one day at the beginning, so the presentation actually shows 8 days, but the first one is empty. The second graphic 'Last 24 hours' shows the course of the day for the last 24 hours.
-	h3 Active sensors:  {{cell.length}}
+	h3 Sensors:  {{cell.length}}
 	
 	table
 		tr

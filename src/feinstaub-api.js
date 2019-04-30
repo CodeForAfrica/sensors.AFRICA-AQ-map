@@ -28,7 +28,7 @@ let api = {
           let long = Number(value.location.longitude);
           let location = String(value.location.name);
           let cityName = String(value.location.city.name);
-          let date = moment(Date(value.last_date_pushed)).format("L");
+          let date = moment(Date(value.last_data_received_at)).format("L");
           let sensorsMoved = Boolean(value.sensors_moved);
           let P1 = value.stats.find(s => s.value_type === "P1");
           let P2 = value.stats.find(s => s.value_type === "P2");
