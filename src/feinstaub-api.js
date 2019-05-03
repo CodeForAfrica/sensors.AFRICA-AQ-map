@@ -1,11 +1,10 @@
 // const URL = 'https://api.luftdaten.info/static/v2/data.dust.min.json'
 // const URL = 'https://api.luftdaten.info/v1/filter/area=48.800000,9.200000,50'
 // const URL = 'https://api.airquality.codeforafrica.org/v2/sensors/?type=PPD42NS,HPM,PMS1003,PMS3003,PMS5003,PMS6003,PMS7003,SDS021,SDS011'
-const URL = "https://staging.api.sensors.africa/v2/nodes/";
+const URL = "https://api.sensors.africa/v2/nodes/";
 
 import _ from "lodash";
 import "whatwg-fetch";
-import moment from "moment";
 
 let api = {
   fetchNow() {
@@ -26,18 +25,14 @@ let api = {
           };
           let lat = Number(value.location.latitude);
           let long = Number(value.location.longitude);
-          let location = String(value.location.name);
-          let cityName = String(value.location.city.name);
-          let date = moment(Date(value.last_data_received_at)).format("L");
+          let date = new Date(value.last_data_received_at);
           let sensorsMoved = Boolean(value.sensors_moved);
           let P1 = value.stats.find(s => s.value_type === "P1");
           let P2 = value.stats.find(s => s.value_type === "P2");
           return {
             latitude: lat,
             longitude: long,
-            location: location,
-            city: cityName,
-            date: date,
+            date: date.toLocaleDateString(),
             sensorsMoved: sensorsMoved,
             id: id(),
             data: {
