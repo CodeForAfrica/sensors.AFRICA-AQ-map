@@ -5,18 +5,17 @@
 	cell-info(:cell='selectedCell')
 </template>
 <script>
-import GeoMap from './map'
-import CellInfo from './cell-info'
-import MapLegend from './legend'
+import GeoMap from "./map";
+import CellInfo from "./cell-info";
+import MapLegend from "./legend";
 
 export default {
-	components: {GeoMap, CellInfo, MapLegend},
-	data () {
-		return {
-			selectedCell: null
-		}
-	},
-}
+  components: { GeoMap, CellInfo, MapLegend },
+  data() {
+    return {
+      selectedCell: null
+    };
+  }
+};
 </script>
-<style lang="stylus">
-</style>
+<style lang="stylus"></style>

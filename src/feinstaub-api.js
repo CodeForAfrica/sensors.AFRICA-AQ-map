@@ -1,61 +1,50 @@
 // const URL = 'https://api.luftdaten.info/static/v2/data.dust.min.json'
 // const URL = 'https://api.luftdaten.info/v1/filter/area=48.800000,9.200000,50'
-const URL = 'https://api.airquality.codeforafrica.org/v1/now/.'
+// const URL = 'https://api.airquality.codeforafrica.org/v2/sensors/?type=PPD42NS,HPM,PMS1003,PMS3003,PMS5003,PMS6003,PMS7003,SDS021,SDS011'
+const URL = "https://api.sensors.africa/v2/nodes/";
 
-import _ from 'lodash'
-import 'whatwg-fetch'
+import _ from "lodash";
+import "whatwg-fetch";
 
 let api = {
-	fetchNow() {
-		return fetch(URL).then((response) => response.json())
-	},
+  fetchNow() {
+    return fetch(URL).then(response => response.json());
+  },
 
-	// fetches from /now, ignores non-finedust sensors
-	// /now returns data from last 5 minutes, so we group all data by sensorId
-	// and compute a mean to get distinct values per sensor
-	getAllSensors() {
-		return api.fetchNow().then((json) => {
-			let cells = _.chain(json)
-				.filter((sensor) =>
-					sensor.location.latitude != null &&
-					sensor.location.longitude != null && (
-					(sensor.sensor.sensor_type.name == "PPD42NS" && sensor.sensordatavalues.length >= 6) ||
-					(sensor.sensor.sensor_type.name == "HPM" && sensor.sensordatavalues.length >= 2) ||
-					(sensor.sensor.sensor_type.name == "PMS1003" && sensor.sensordatavalues.length >= 2) ||
-					(sensor.sensor.sensor_type.name == "PMS3003" && sensor.sensordatavalues.length >= 2) ||
-					(sensor.sensor.sensor_type.name == "PMS5003" && sensor.sensordatavalues.length >= 2) ||
-					(sensor.sensor.sensor_type.name == "PMS6003" && sensor.sensordatavalues.length >= 2) ||
-					(sensor.sensor.sensor_type.name == "PMS7003" && sensor.sensordatavalues.length >= 2) ||
-					(sensor.sensor.sensor_type.name == "SDS021" && sensor.sensordatavalues.length >= 2) ||
-					(sensor.sensor.sensor_type.name == 'SDS011' && sensor.sensordatavalues.length >= 2))
-				)
-				.groupBy((sensor) => sensor.sensor.id)
-				.map((values, key) => {
-					let lat = Number(values[0].location.latitude)
-					let long = Number(values[0].location.longitude)
-					let data = _.reduce(values, (acc, value) => {
-						let d = _.keyBy(value.sensordatavalues, 'value_type')
-						if (typeof d.P1 !== 'undefined' && d.P1 !== null && typeof d.P2 !== 'undefined' && d.P2 !== null && Number(d.P1.value) < 1999 && Number(d.P2.value < 999) ) {
-							acc.P1 += Number(d.P1.value)
-							acc.P2 += Number(d.P2.value)
-						}
-						return acc
-					}, {P1: 0, P2: 0})
-					return {
-						latitude: lat,
-						longitude: long,
-						id: values[0].sensor.id,
-						data: {
-							P1: data.P1 / values.length,
-							P2: data.P2 / values.length
-						}
-					}
-				})
-				.value()
+  // fetches from /now, ignores non-finedust sensors
+  // /now returns data from last 5 minutes, so we group all data by sensorId
+  // and compute a mean to get distinct values per sensor
+  getAllSensors() {
+    return api.fetchNow().then(json => {
+      let cells = _.chain(json)
+        .map((value, key) => {
+          let id = function(id) {
+            for (let i in value.stats) {
+              return Number(value.stats[i].sensor_id);
+            }
+          };
+          let lat = Number(value.location.latitude);
+          let long = Number(value.location.longitude);
+          let date = new Date(value.last_data_received_at);
+          let sensorsMoved = Boolean(value.sensors_moved);
+          let P1 = value.stats.find(s => s.value_type === "P1");
+          let P2 = value.stats.find(s => s.value_type === "P2");
+          return {
+            latitude: lat,
+            longitude: long,
+            date: date.toLocaleDateString(),
+            sensorsMoved: sensorsMoved,
+            id: id(),
+            data: {
+              P1: P1 ? P1.average : 0,
+              P2: P2 ? P2.average : 0
+            }
+          };
+        })
+        .value();
+      return Promise.resolve(cells);
+    });
+  }
+};
 
-			return Promise.resolve(cells)
-		})
-	}
-}
-
-export default api
+export default api;
