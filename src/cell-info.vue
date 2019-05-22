@@ -16,7 +16,7 @@
 			th Sensor ID
 			th PM10 µg/m³
 			th PM2.5 µg/m³
-			th Last actisve date
+			th Last active date
 		tr.mean
 			td mean
 			td {{mean.P1.toFixed(0)}}

@@ -27,6 +27,7 @@ let api = {
               } else return null;
             }
           };
+          console.log(id());
           let lat = Number(value.location.latitude);
           let long = Number(value.location.longitude);
           let location = value.location.name;
