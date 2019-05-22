@@ -16,33 +16,17 @@ let api = {
   // /now returns data from last 5 minutes, so we group all data by sensorId
   // and compute a mean to get distinct values per sensor
   getAllSensors() {
-    return api.fetchNow().then(json => { 
-      function(i) {
-        for (let i in json) {
-          if (json[i].node_moved == true) {
-            return json
-          } else return null;
-        }
-      };
-      console.log(json)
+    return api.fetchNow().then(json => {
       let cells = _.chain(json)
-        .filter(json => json.node_moved == true)
+        .filter(json => json.node_moved == false)
         .map((value, key) => {
-          ///let id = function(id) {
-          //for (let i in value.stats) {
-          //return Number(value.stats[i].sensor_id);
-          //}
-          //};
-          //console.log(id());
-
-          //let id = function(id) {
-            //for (let i in value.stats) {
-              //if (value.node_moved == true) {
-                //return Number(value.stats[i].sensor_id);
-              //} else return null;
-            //}
-          //};
-          ///console.log(id());
+          let id = function(id) {
+            for (let i in value.stats) {
+              if (value.node_moved == false) {
+                return Number(value.stats[i].sensor_id);
+              } else return null;
+            }
+          };
           let lat = Number(value.location.latitude);
           let long = Number(value.location.longitude);
           let location = value.location.name;
