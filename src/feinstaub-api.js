@@ -22,9 +22,7 @@ let api = {
         .map((value, key) => {
           let id = function(id) {
             for (let i in value.stats) {
-              if (value.node_moved == false) {
-                return Number(value.stats[i].sensor_id);
-              } else return null;
+              return Number(value.stats[i].sensor_id);
             }
           };
           let lat = Number(value.location.latitude);
