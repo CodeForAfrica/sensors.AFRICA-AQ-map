@@ -21,13 +21,20 @@ let api = {
         .filter(json => json.node_moved === false)
         .map((value, key) => {
           let id = function(id) {
-            for (let i in value.stats) {
-              return Number(value.stats[i].sensor_id);
+            for (var i in value.stats) {
+              if (
+                value.stats[i].value_type === "P1" ||
+                value.stats[i].value_type === "P2"
+              ) {
+                return Number(value.stats[i].sensor_id);
+              }
             }
           };
+          //console.log(id());
           let lat = Number(value.location.latitude);
           let long = Number(value.location.longitude);
           let location = value.location.name;
+          console.log(location);
           let date = new Date(value.last_data_received_at);
           let P1 = value.stats.find(s => s.value_type === "P1");
           let P2 = value.stats.find(s => s.value_type === "P2");

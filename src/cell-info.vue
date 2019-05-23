@@ -17,11 +17,13 @@
 			th PM10 µg/m³
 			th PM2.5 µg/m³
 			th Last active date
+
 		tr.mean
 			td mean
 			td {{mean.P1.toFixed(0)}}
 			td {{mean.P2.toFixed(0)}}
 			td
+
 
 		template(v-for="sensor in cell")
 			tr
@@ -31,6 +33,7 @@
 				td {{sensor.o.data.P1.toFixed(0)}}
 				td {{sensor.o.data.P2.toFixed(0)}}
 				td {{sensor.o.date}}
+
 				
 			tr(:id = "'graph_'+sensor.o.id" style="display:none" class="cell_info_images")
 				td(:id = "'images_'+sensor.o.id" colspan='6')
