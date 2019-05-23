@@ -30,18 +30,15 @@ let api = {
               }
             }
           };
-          //console.log(id());
+          console.log(id());
           let lat = Number(value.location.latitude);
           let long = Number(value.location.longitude);
-          let location = value.location.name;
-          console.log(location);
           let date = new Date(value.last_data_received_at);
           let P1 = value.stats.find(s => s.value_type === "P1");
           let P2 = value.stats.find(s => s.value_type === "P2");
           return {
             latitude: lat,
             longitude: long,
-            location: location,
             date: date.toLocaleDateString(),
             id: id(),
             data: {
