@@ -30,7 +30,6 @@ let api = {
               }
             }
           };
-          console.log(id());
           let lat = Number(value.location.latitude);
           let long = Number(value.location.longitude);
           let date = new Date(value.last_data_received_at);
