@@ -31,6 +31,7 @@
 				td {{sensor.o.data.P1.toFixed(0)}}
 				td {{sensor.o.data.P2.toFixed(0)}}
 				td {{sensor.o.date}}
+				
 			tr(:id = "'graph_'+sensor.o.id" style="display:none" class="cell_info_images")
 				td(:id = "'images_'+sensor.o.id" colspan='6')
 					br
