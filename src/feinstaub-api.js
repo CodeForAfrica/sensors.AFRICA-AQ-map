@@ -1,9 +1,7 @@
 // const URL = 'https://api.luftdaten.info/static/v2/data.dust.min.json'
 // const URL = 'https://api.luftdaten.info/v1/filter/area=48.800000,9.200000,50'
 // const URL = 'https://api.airquality.codeforafrica.org/v2/sensors/?type=PPD42NS,HPM,PMS1003,PMS3003,PMS5003,PMS6003,PMS7003,SDS021,SDS011'
-//const URL = "https://api.sensors.africa/v2/nodes/";
-
-const URL = "http://staging.api.sensors.africa/v2/nodes/";
+const URL = "https://api.sensors.africa/v2/nodes/";
 
 import _ from "lodash";
 import "whatwg-fetch";
