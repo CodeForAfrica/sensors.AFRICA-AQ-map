@@ -24,6 +24,11 @@ module.exports = {
     "no-return-assign": 0
   },
   globals: {
-    localStorage: false
+    localStorage: true,
+    document: true,
+    window: true,
+    location: true,
+    history: true,
+    fetch: true
   }
 };
