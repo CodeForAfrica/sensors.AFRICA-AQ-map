@@ -14,6 +14,8 @@ import querystring from 'querystring';
 import config from 'config';
 import places from './places';
 import zooms from './zooms';
+import { throttle } from './utils';
+
 
 export default {
   mounted() {
@@ -23,6 +25,7 @@ export default {
         this.hexLayer.data(cells);
       });
     };
+
     const query = querystring.parse(window.location.search.substring(1));
     if (query.center) {
       // Coordinates are passed by query
@@ -103,20 +106,29 @@ export default {
 
     this.hexLayer = new leaflet.HexbinLayer(options).addTo(map);
 
-    window.onpopstate = event => {
-      if (location.hash !== undefined && location.hash !== '') {
-        const c = this.hash.parseHash(location.hash);
-        if (config.center.join(',') !== c.center.toString()) {
-          config.center = c.center.toString().split(',');
-          config.zoom = c.zoom;
-        }
-        loadSensors();
-      }
-    };
-    loadSensors();
     // Leaflet-hash lets you to add dynamic URL hashes to web pages with Leaflet maps.
     // You can easily link users to specific map views.
     this.hash = new L.hash(map);
+
+    // Remove the hexlayer to on reload so that the position is updated
+    // map.setView or map.panTo called in Hash does not seem to update hexLayer
+    const reload = throttle(() => {
+        map.removeLayer(this.hexLayer);
+        loadSensors();
+        this.hexLayer.addTo(map);
+    }, 200); // hash has a default throttle of 100 ms
+
+    map.on('dragend', () => {
+      map.dragged = true; // don't reload when dragged
+    });
+
+    map.on('moveend zoomend', () => {
+      if (map.dragged) {
+        return map.dragged = false;
+      }
+
+      reload();
+    });
   }
 };
 </script>
