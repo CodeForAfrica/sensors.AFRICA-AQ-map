@@ -19,13 +19,6 @@ import { throttle } from './utils';
 
 export default {
   mounted() {
-    const loadSensors = () => {
-      this.hexLayer.data([]);
-      api.getAllSensors().then(cells => {
-        this.hexLayer.data(cells);
-      });
-    };
-
     const query = querystring.parse(window.location.search.substring(1));
     if (query.center) {
       // Coordinates are passed by query
@@ -112,10 +105,11 @@ export default {
 
     // Remove the hexlayer to on reload so that the position is updated
     // map.setView or map.panTo called in Hash does not seem to update hexLayer
-    const reload = throttle(() => {
+    const refresh = throttle(() => {
         map.removeLayer(this.hexLayer);
-        loadSensors();
+        this.hexLayer.data([]);
         this.hexLayer.addTo(map);
+        this.hexLayer.data(this.data);
     }, 200); // hash has a default throttle of 100 ms
 
     map.on('dragend', () => {
@@ -127,7 +121,13 @@ export default {
         return map.dragged = false;
       }
 
-      reload();
+      refresh();
+    });
+
+    this.data = [];
+    api.getAllSensors().then(data => {
+      this.data = data;
+      refresh();
     });
   }
 };
