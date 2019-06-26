@@ -14,7 +14,7 @@ import querystring from 'querystring';
 import config from 'config';
 import places from './places';
 import zooms from './zooms';
-import { throttle } from './utils';
+import _ from 'lodash';
 
 
 export default {
@@ -69,7 +69,7 @@ export default {
 
     // Remove the hexlayer to on reload so that the position is updated
     // map.setView or map.panTo called in Hash does not seem to update hexLayer
-    const refresh = throttle(() => {
+    const refresh = _.debounce(() => {
         map.removeLayer(this.hexLayer);
         this.hexLayer.data([]);
         this.hexLayer.addTo(map);
