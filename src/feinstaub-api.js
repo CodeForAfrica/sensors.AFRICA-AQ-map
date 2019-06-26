@@ -1,39 +1,32 @@
 // const URL = 'https://api.luftdaten.info/static/v2/data.dust.min.json'
 // const URL = 'https://api.luftdaten.info/v1/filter/area=48.800000,9.200000,50'
 // const URL = 'https://api.airquality.codeforafrica.org/v2/sensors/?type=PPD42NS,HPM,PMS1003,PMS3003,PMS5003,PMS6003,PMS7003,SDS021,SDS011'
-const URL = 'http://api.sensors.africa/v2/nodes/?format=json'
-// const URL = "http://staging.api.sensors.africa/v2/nodes/";
+import _ from 'lodash';
+import 'whatwg-fetch';
 
-import _ from 'lodash'
-import 'whatwg-fetch'
+const URL = process.env.API_URL;
 
-let api = {
-  fetchNow () {
-    return fetch(URL).then(response => response.json())
+const api = {
+  fetchNow() {
+    return fetch(URL).then(response => response.json());
   },
   // fetches from /now, ignores non-finedust sensors
   // /now returns data from last 5 minutes, so we group all data by sensorId
   // and compute a mean to get distinct values per sensor
-  getAllSensors () {
+  getAllSensors() {
     return api.fetchNow().then(json => {
-      let cells = _.chain(json)
-        .filter(json => json.node_moved === false)
-        .map((value, key) => {
-          let id = function (id) {
-            for (var i in value.stats) {
-              if (
-                value.stats[i].value_type === 'P1' ||
-                value.stats[i].value_type === 'P2'
-              ) {
-                return Number(value.stats[i].sensor_id)
-              }
-            }
-          }
-          let lat = Number(value.location.latitude)
-          let long = Number(value.location.longitude)
-          let date = new Date(value.last_data_received_at)
-          let P1 = value.stats.find(s => s.value_type === 'P1')
-          let P2 = value.stats.find(s => s.value_type === 'P2')
+      const cells = _.chain(json)
+        .filter(node => node.node_moved === false)
+        .map((value) => {
+          const id = () => {
+            const stat = value.stats.find(s => ['P1', 'P2'].indexOf(s.value_type) !== -1);
+            return stat ? Number(stat.sensor_id) : undefined;
+          };
+          const lat = Number(value.location.latitude);
+          const long = Number(value.location.longitude);
+          const date = new Date(value.last_data_received_at);
+          const P1 = value.stats.find(s => s.value_type === 'P1');
+          const P2 = value.stats.find(s => s.value_type === 'P2');
           return {
             latitude: lat,
             longitude: long,
@@ -43,12 +36,12 @@ let api = {
               P1: P1 ? P1.average : 0,
               P2: P2 ? P2.average : 0
             }
-          }
+          };
         })
-        .value()
-      return Promise.resolve(cells)
-    })
+        .value();
+      return Promise.resolve(cells);
+    });
   }
-}
+};
 
-export default api
+export default api;
