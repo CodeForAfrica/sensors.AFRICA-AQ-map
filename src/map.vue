@@ -82,7 +82,8 @@ export default {
 
     map.on('moveend zoomend', () => {
       if (map.dragged) {
-        return map.dragged = false;
+        map.dragged = false;
+        return;
       }
 
       refresh();
