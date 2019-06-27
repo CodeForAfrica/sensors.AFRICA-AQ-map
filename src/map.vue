@@ -16,9 +16,44 @@ import places from './places';
 import zooms from './zooms';
 import _ from 'lodash';
 
-
 export default {
   mounted() {
+    const query = querystring.parse(window.location.search.substring(1));
+    if (query.center) {
+      // Coordinates are passed by query
+      // /?center={lat},{lng}&zoom={zoom}
+      const center = query.center.split(',').map(coord => parseFloat(coord));
+      config.center = center;
+      if (query.zoom) {
+        config.zoom = parseInt(query.zoom);
+      }
+    } else if (location.hash) {
+      // Coordinates are passed by hash path
+      // /#{zoom}/{lat}/{lng}
+      var hashParams = location.hash.split('/');
+      config.center = [hashParams[1], hashParams[2]];
+      config.zoom = hashParams[0].substring(1);
+    } else {
+      // Visited city or country subdomain
+      // https://{ city or country }.map.aq.sensors.africa
+      //
+      // Currenlty will not work
+      // NOT SUPPORTED
+      //
+      const hostname = location.hostname;
+      const hostnameParts = hostname.split('.');
+      if (hostnameParts.length === 4) {
+        const place = hostnameParts[0].toLowerCase();
+        if (typeof places[place] !== 'undefined' && places[place] !== null) {
+          config.center = places[place];
+          config.zoom = 11;
+        }
+        if (typeof zooms[place] !== 'undefined' && zooms[place] !== null) {
+          config.zoom = zooms[place];
+        }
+      }
+    }
+
     const map = leaflet.map(this.$el, {
       center: config.center,
       zoom: config.zoom
@@ -82,8 +117,7 @@ export default {
 
     map.on('moveend zoomend', () => {
       if (map.dragged) {
-        map.dragged = false;
-        return;
+        return map.dragged = false;
       }
 
       refresh();
