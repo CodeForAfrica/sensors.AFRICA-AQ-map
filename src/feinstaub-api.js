@@ -1,14 +1,12 @@
 // const URL = 'https://api.luftdaten.info/static/v2/data.dust.min.json'
 // const URL = 'https://api.luftdaten.info/v1/filter/area=48.800000,9.200000,50'
 // const URL = 'https://api.airquality.codeforafrica.org/v2/sensors/?type=PPD42NS,HPM,PMS1003,PMS3003,PMS5003,PMS6003,PMS7003,SDS021,SDS011'
-const URL = "https://api.sensors.africa/v2/nodes/";
+import _ from 'lodash';
+import 'whatwg-fetch';
 
-//const URL = "http://staging.api.sensors.africa/v2/nodes/";
+const URL = process.env.API_URL;
 
-import _ from "lodash";
-import "whatwg-fetch";
-
-let api = {
+const api = {
   fetchNow() {
     return fetch(URL).then(response => response.json());
   },
@@ -17,24 +15,18 @@ let api = {
   // and compute a mean to get distinct values per sensor
   getAllSensors() {
     return api.fetchNow().then(json => {
-      let cells = _.chain(json)
-        .filter(json => json.node_moved === false)
-        .map((value, key) => {
-          let id = function(id) {
-            for (var i in value.stats) {
-              if (
-                value.stats[i].value_type === "P1" ||
-                value.stats[i].value_type === "P2"
-              ) {
-                return Number(value.stats[i].sensor_id);
-              }
-            }
+      const cells = _.chain(json)
+        .filter(node => node.node_moved === false)
+        .map((value) => {
+          const id = () => {
+            const stat = value.stats.find(s => ['P1', 'P2'].indexOf(s.value_type) !== -1);
+            return stat ? Number(stat.sensor_id) : undefined;
           };
-          let lat = Number(value.location.latitude);
-          let long = Number(value.location.longitude);
-          let date = new Date(value.last_data_received_at);
-          let P1 = value.stats.find(s => s.value_type === "P1");
-          let P2 = value.stats.find(s => s.value_type === "P2");
+          const lat = Number(value.location.latitude);
+          const long = Number(value.location.longitude);
+          const date = new Date(value.last_data_received_at);
+          const P1 = value.stats.find(s => s.value_type === 'P1');
+          const P2 = value.stats.find(s => s.value_type === 'P2');
           return {
             latitude: lat,
             longitude: long,

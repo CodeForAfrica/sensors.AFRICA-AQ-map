@@ -1,10 +1,10 @@
 module.exports = {
   root: true,
+  extends: "airbnb-base",
   parser: "babel-eslint",
   parserOptions: {
     sourceType: "module"
   },
-  extends: "standard",
   // required to lint *.vue files
   plugins: ["html"],
   // add your custom rules here
@@ -24,6 +24,11 @@ module.exports = {
     "no-return-assign": 0
   },
   globals: {
-    localStorage: false
+    localStorage: true,
+    document: true,
+    window: true,
+    location: true,
+    history: true,
+    fetch: true
   }
 };

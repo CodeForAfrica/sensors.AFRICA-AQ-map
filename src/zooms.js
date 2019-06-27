@@ -1,268 +1,268 @@
 module.exports = {
 
-	"europe": 4,
+  europe: 4,
 
-//	---- Europe ----
+  //	---- Europe ----
 
-//	Germany
-	"deutschland": 6,
-	"germany": 6,
-	"baden-wuerttemberg": 8,
-	"bayern": 7,
-	"brandenburg": 7,
-	"hessen": 8,
-	"mecklenburg-vorpommern": 8,
-	"niedersachsen": 8,
-	"nordrhein-westfalen": 8,
-	"rheinland-pfalz": 8,
-	"saarland": 10,
-	"sachsen": 9,
-	"sachsen-anhalt": 8,
-	"schleswig-holstein": 8,
-	"thueringen": 8,
-		
-	"ruhrgebiet": 9,
+  //	Germany
+  deutschland: 6,
+  germany: 6,
+  'baden-wuerttemberg': 8,
+  bayern: 7,
+  brandenburg: 7,
+  hessen: 8,
+  'mecklenburg-vorpommern': 8,
+  niedersachsen: 8,
+  'nordrhein-westfalen': 8,
+  'rheinland-pfalz': 8,
+  saarland: 10,
+  sachsen: 9,
+  'sachsen-anhalt': 8,
+  'schleswig-holstein': 8,
+  thueringen: 8,
 
-//	Albania
-	"albania": 7,
+  ruhrgebiet: 9,
 
-//	Austria
-	"oesterreich": 7,
-	"austria": 7,
+  //	Albania
+  albania: 7,
 
-//	Belarus
-	"belarus": 6,
+  //	Austria
+  oesterreich: 7,
+  austria: 7,
 
-//	Belgium
-	"belgium": 8,
+  //	Belarus
+  belarus: 6,
 
-//	Bulgaria
-	"bulgaria": 7,
-	"sofia": 12,
+  //	Belgium
+  belgium: 8,
 
-//	Croatia
-	"croatia": 7,
+  //	Bulgaria
+  bulgaria: 7,
+  sofia: 12,
 
-//	Cyprus
-	"cyprus": 9,
+  //	Croatia
+  croatia: 7,
 
-//	Czech Republic
-	"czech-republic": 8,
+  //	Cyprus
+  cyprus: 9,
 
-//	Denmark
-	"denmark": 7,
+  //	Czech Republic
+  'czech-republic': 8,
 
-//	France
-	"france": 6,
-	"alsace": 8,
+  //	Denmark
+  denmark: 7,
 
-//	Finland
-	"finland": 5,
+  //	France
+  france: 6,
+  alsace: 8,
 
-//	Greece
-	"greece": 6,
+  //	Finland
+  finland: 5,
 
-//	Hungary
-	"hungary": 7,
+  //	Greece
+  greece: 6,
 
-//	Ireland
-	"ireland": 7,
+  //	Hungary
+  hungary: 7,
 
-//	Italy
-	"italy": 6,
-	"sicily": 8,
+  //	Ireland
+  ireland: 7,
 
-//	Kosovo
-	"kosovo": 8,
+  //	Italy
+  italy: 6,
+  sicily: 8,
 
-//	Latvia
-	"latvia": 7,
+  //	Kosovo
+  kosovo: 8,
 
-//	Luxembourg
-	"luxembourg": 9,
+  //	Latvia
+  latvia: 7,
 
-//	Macedonia
-	"macedonia": 9,
+  //	Luxembourg
+  luxembourg: 9,
 
-//	Netherlands
-	"netherlands": 7,
+  //	Macedonia
+  macedonia: 9,
 
-//	Norway
-	"norway": 4,
+  //	Netherlands
+  netherlands: 7,
 
-//	Poland
-	"poland": 6,
-	"warsaw": 10,
+  //	Norway
+  norway: 4,
 
-//	Portugal
-	"portugal": 7,
-	"lisbon": 10,
+  //	Poland
+  poland: 6,
+  warsaw: 10,
 
-//	Romania
-	"romania": 7,
+  //	Portugal
+  portugal: 7,
+  lisbon: 10,
 
-//	Russia
-	"russia": 3,
-	"moskow": 10,
+  //	Romania
+  romania: 7,
 
-//	Serbia
-	"serbia": 7,
+  //	Russia
+  russia: 3,
+  moskow: 10,
 
-//	Slovakia
-	"slovakia": 8,
+  //	Serbia
+  serbia: 7,
 
-//	Slovenia
-	"slovenia": 8,
+  //	Slovakia
+  slovakia: 8,
 
-//	Spain
-	"spain": 6,
-	"mallorca": 10,
-	"majorca": 10,
+  //	Slovenia
+  slovenia: 8,
 
-//	Suisse
-	"schweiz": 8,
-	"suisse": 8,
+  //	Spain
+  spain: 6,
+  mallorca: 10,
+  majorca: 10,
 
-//	Sweden
-	"sweden": 4,
+  //	Suisse
+  schweiz: 8,
+  suisse: 8,
 
-//	Ukraine
-	"ukraine": 6,
+  //	Sweden
+  sweden: 4,
 
-//	United Kingdom
-	"united-kingdom": 5,
-	"london": 10,
+  //	Ukraine
+  ukraine: 6,
 
-//	---- Africa ----
+  //	United Kingdom
+  'united-kingdom': 5,
+  london: 10,
 
-//	Cameroon
-	"cameroon": 6,
+  //	---- Africa ----
 
-//	Egypt
-	"egypt": 6,
+  //	Cameroon
+  cameroon: 6,
 
-//	Kenya
-	"kenya": 6,
+  //	Egypt
+  egypt: 6,
 
-//	Nigeria
-	"nigeria": 6,
+  //	Kenya
+  kenya: 6,
 
-//	Tanzania
-	"tanzania": 6,
+  //	Nigeria
+  nigeria: 6,
 
-//	South Africa
-	"south-africa": 6,
+  //	Tanzania
+  tanzania: 6,
 
-//	---- America ----
+  //	South Africa
+  'south-africa': 6,
 
-//	Argentina
-	"argentina": 4,
-	"buenos-aires": 10,
+  //	---- America ----
 
-//	Bolivia
-	"bolivia": 6,
+  //	Argentina
+  argentina: 4,
+  'buenos-aires': 10,
 
-//	Brazil
-	"brazil": 4,
-	"brasilia": 10,
-	"sao-paulo": 10,
+  //	Bolivia
+  bolivia: 6,
 
-//	Canada
-	"canada": 3,
+  //	Brazil
+  brazil: 4,
+  brasilia: 10,
+  'sao-paulo': 10,
 
-//	Chile
-	"chile": 4,
-	"santiago": 10,
+  //	Canada
+  canada: 3,
 
-//	Colombia
-	"colombia": 5,
+  //	Chile
+  chile: 4,
+  santiago: 10,
 
-//	Costa Rica
-	"costa-rica": 8,
+  //	Colombia
+  colombia: 5,
 
-//	Dominican Republic
-	"dominican-republic": 8,
+  //	Costa Rica
+  'costa-rica': 8,
 
-//	Guatemala
-	"guatemala": 7,
+  //	Dominican Republic
+  'dominican-republic': 8,
 
-//	Haiti
-	"haiti": 8,
+  //	Guatemala
+  guatemala: 7,
 
-//	Mexico
-	"mexico": 5,
-	
-//	Peru
-	"peru": 5,
+  //	Haiti
+  haiti: 8,
 
-//	USA
-	"usa": 4,
-	"united-states": 4,
+  //	Mexico
+  mexico: 5,
 
-//	---- Asia ----
+  //	Peru
+  peru: 5,
 
-//	Brunei
-	"brunei": 9,
+  //	USA
+  usa: 4,
+  'united-states': 4,
 
-//	China
-	"china": 4,
-	"beijing": 9,
+  //	---- Asia ----
 
-//	India
-	"india": 4,
+  //	Brunei
+  brunei: 9,
 
-//	Iraq
-	"iraq": 6,
+  //	China
+  china: 4,
+  beijing: 9,
 
-//	Israel
-	"israel": 7,
+  //	India
+  india: 4,
 
-//	Japan
-	"japan": 5,
-	"tokyo": 9,
+  //	Iraq
+  iraq: 6,
 
-//	Kyrgyzstan
-	"kyrgyzstan": 7,
+  //	Israel
+  israel: 7,
 
-//	Malaysia
-	"malaysia": 7,
-	
-//	Nepal
-	"nepal": 7,
+  //	Japan
+  japan: 5,
+  tokyo: 9,
 
-//	Oman
-	"oman": 6,
+  //	Kyrgyzstan
+  kyrgyzstan: 7,
 
-//	Republic of Korea
-	"republic-of-korea": 7,
+  //	Malaysia
+  malaysia: 7,
 
-//	Taiwan
-	"taiwan": 8,
+  //	Nepal
+  nepal: 7,
 
-//	Thailand
-	"thailand": 5,
+  //	Oman
+  oman: 6,
 
-//	Turkey
-	"turkey": 6,
+  //	Republic of Korea
+  'republic-of-korea': 7,
 
-//	United Arab Emirates
-	"united-arab-emirates": 7,
-	"uae": 7,
-	"dubai": 10,
+  //	Taiwan
+  taiwan: 8,
 
-//	Vietnam
-	"vietnam": 6,
+  //	Thailand
+  thailand: 5,
 
-//	---- Australia ----
+  //	Turkey
+  turkey: 6,
 
-//	Australia
-	"australia": 4,
-	"adelaide": 10,
-	"brisbane": 10,
-	"melbourne": 10,
-	"perth": 10,
-	"sydney": 10,
+  //	United Arab Emirates
+  'united-arab-emirates': 7,
+  uae: 7,
+  dubai: 10,
 
-	"world": 2		
+  //	Vietnam
+  vietnam: 6,
 
-}
+  //	---- Australia ----
+
+  //	Australia
+  australia: 4,
+  adelaide: 10,
+  brisbane: 10,
+  melbourne: 10,
+  perth: 10,
+  sydney: 10,
+
+  world: 2
+
+};
