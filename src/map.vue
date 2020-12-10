@@ -22,7 +22,7 @@ export default {
     if (query.center) {
       // Coordinates are passed by query
       // /?center={lat},{lng}&zoom={zoom}
-      const center = query.center.split(',').map(coord => parseFloat(coord));
+      const center = query.center.split(',').map((coord) => parseFloat(coord));
       config.center = center;
       if (query.zoom) {
         config.zoom = parseInt(query.zoom);
@@ -56,7 +56,7 @@ export default {
 
     const map = leaflet.map(this.$el, {
       center: config.center,
-      zoom: config.zoom
+      zoom: config.zoom,
     });
 
     // Check if embedded and disable zoom
@@ -66,10 +66,10 @@ export default {
 
     // leaflet.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     leaflet
-      .tileLayer('https://maps.luftdaten.info/tiles/{z}/{x}/{y}.png', {
+      .tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution:
           'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
-        maxZoom: 13
+        maxZoom: 13,
         // continuousWorld: false,
         // noWrap: true
       })
@@ -78,7 +78,7 @@ export default {
     const options = {
       mouseover: () => {},
       mouseout: () => {},
-      click: data => {
+      click: (data) => {
         this.$emit('cell-selected', data);
         document.getElementById('cell-info').style.display = '';
         let row_counter = document.getElementsByClassName('cell_info_images');
@@ -93,7 +93,7 @@ export default {
         for (var i = 0; i < row_counter.length; i++) {
           row_counter[i].style.display = 'none';
         }
-      }
+      },
     };
 
     this.hexLayer = new leaflet.HexbinLayer(options).addTo(map);
@@ -105,10 +105,10 @@ export default {
     // Remove the hexlayer to on reload so that the position is updated
     // map.setView or map.panTo called in Hash does not seem to update hexLayer
     const refresh = _.debounce(() => {
-        map.removeLayer(this.hexLayer);
-        this.hexLayer.data([]);
-        this.hexLayer.addTo(map);
-        this.hexLayer.data(this.data);
+      map.removeLayer(this.hexLayer);
+      this.hexLayer.data([]);
+      this.hexLayer.addTo(map);
+      this.hexLayer.data(this.data);
     }, 200); // hash has a default throttle of 100 ms
 
     map.on('dragend', () => {
@@ -117,18 +117,18 @@ export default {
 
     map.on('moveend zoomend', () => {
       if (map.dragged) {
-        return map.dragged = false;
+        return (map.dragged = false);
       }
 
       refresh();
     });
 
     this.data = [];
-    api.getAllSensors().then(data => {
+    api.getAllSensors().then((data) => {
       this.data = data;
       refresh();
     });
-  }
+  },
 };
 </script>
 <style lang="stylus"></style>
