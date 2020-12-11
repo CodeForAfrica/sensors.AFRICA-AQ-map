@@ -70,8 +70,8 @@ export default {
         attribution:
           'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
         maxZoom: 13,
-        // continuousWorld: false,
-        // noWrap: true
+        continuousWorld: false,
+        noWrap: true,
       })
       .addTo(map);
 
